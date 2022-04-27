@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		2A9A01042819238800296BFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A01032819238800296BFC /* AppDelegate.swift */; };
 		2A9A01062819238800296BFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A01052819238800296BFC /* SceneDelegate.swift */; };
-		2A9A01082819238800296BFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A01072819238800296BFC /* ViewController.swift */; };
 		2A9A010B2819238800296BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9A01092819238800296BFC /* Main.storyboard */; };
 		2A9A010E2819238800296BFC /* Gercep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A010C2819238800296BFC /* Gercep.xcdatamodeld */; };
 		2A9A01102819238900296BFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9A010F2819238900296BFC /* Assets.xcassets */; };
 		2A9A01132819238900296BFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9A01112819238900296BFC /* LaunchScreen.storyboard */; };
+		2A9A011D28192D0C00296BFC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A011C28192D0C00296BFC /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2A9A01002819238800296BFC /* Gercep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gercep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9A01032819238800296BFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A9A01052819238800296BFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2A9A01072819238800296BFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2A9A010A2819238800296BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A9A010D2819238800296BFC /* Gercep.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gercep.xcdatamodel; sourceTree = "<group>"; };
 		2A9A010F2819238900296BFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A9A01122819238900296BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A9A01142819238900296BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A9A011C28192D0C00296BFC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +60,10 @@
 			children = (
 				2A9A01032819238800296BFC /* AppDelegate.swift */,
 				2A9A01052819238800296BFC /* SceneDelegate.swift */,
-				2A9A01072819238800296BFC /* ViewController.swift */,
+				2A9A011C28192D0C00296BFC /* HomeViewController.swift */,
 				2A9A01092819238800296BFC /* Main.storyboard */,
-				2A9A010F2819238900296BFC /* Assets.xcassets */,
 				2A9A01112819238900296BFC /* LaunchScreen.storyboard */,
+				2A9A010F2819238900296BFC /* Assets.xcassets */,
 				2A9A01142819238900296BFC /* Info.plist */,
 				2A9A010C2819238800296BFC /* Gercep.xcdatamodeld */,
 			);
@@ -141,10 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A9A01082819238800296BFC /* ViewController.swift in Sources */,
 				2A9A010E2819238800296BFC /* Gercep.xcdatamodeld in Sources */,
 				2A9A01042819238800296BFC /* AppDelegate.swift in Sources */,
 				2A9A01062819238800296BFC /* SceneDelegate.swift in Sources */,
+				2A9A011D28192D0C00296BFC /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
