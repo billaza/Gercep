@@ -13,13 +13,18 @@ class GalleryViewController: UIViewController {
     
     var galleryItem = [Gallery]()
     var index:Int = 0
+    var stepper:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavbar()
         galleryCollection.delegate = self
         galleryCollection.dataSource = self
-        dataFeeder2()
+        
+        if stepper == 0 {
+            dataFeeder2()
+        }
+        
         galleryCollection.reloadData()
     }
     
@@ -37,6 +42,8 @@ class GalleryViewController: UIViewController {
         galleryItem.append(gallery4)
         galleryItem.append(gallery5)
         galleryItem.append(gallery6)
+        
+        stepper = 1
     }
     
     func configureNavbar() {

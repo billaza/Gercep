@@ -17,6 +17,7 @@ class ClosetViewController: UIViewController {
     var closetNeutral = [Closet]()
     var closetVibrant = [Closet]()
     var index:Int = 0
+    var stepper:Int = 0
     var type:String?
     
     override func viewDidLoad() {
@@ -24,7 +25,11 @@ class ClosetViewController: UIViewController {
         configureNavbar()
         closetCollection.delegate = self
         closetCollection.dataSource = self
-        dataFeeder()
+        
+        if stepper == 0 {
+            dataFeeder()
+        }
+        
         closetCollection.reloadData()
     }
     
@@ -75,6 +80,7 @@ class ClosetViewController: UIViewController {
         }
         
         closetItem = closetNeutral
+        stepper = 1
     }
     
     func configureNavbar() {
