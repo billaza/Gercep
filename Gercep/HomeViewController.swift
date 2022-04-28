@@ -46,6 +46,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return nil
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 20 : 18
+    }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,6 +82,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if (segue.identifier == "homeToCloset") {
             let dest = segue.destination as! ClosetViewController
             dest.title = menus[index]
+            dest.type = menus[index]
         }
         else if (segue.identifier == "homeToGallery") {
             let dest = segue.destination as! GalleryViewController
