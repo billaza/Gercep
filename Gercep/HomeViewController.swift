@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var menuTable: UITableView!
     
+    var index:Int = 0
     var menus:[String] = ["All", "Tops", "Bottoms", "One-piece", "Shoes"]
     
     override func viewDidLoad() {
@@ -45,10 +46,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return nil
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 20 : 18
+    }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let menu = menus[indexPath.row]
         
         let cellA = tableView.dequeueReusableCell(withIdentifier: "closetCell", for: indexPath) as! ClosetTableViewCell
         let cellB = tableView.dequeueReusableCell(withIdentifier: "galleryCell", for: indexPath) as! GalleryTableViewCell
@@ -60,6 +64,29 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             cellB.galleryLbl.text = "My Gallery"
             return cellB
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        index = indexPath.row
+        
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "homeToCloset", sender: self)
+        }
+        else {
+            performSegue(withIdentifier: "homeToGallery", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "homeToCloset") {
+            let dest = segue.destination as! ClosetViewController
+            dest.title = menus[index]
+            dest.type = menus[index]
+        }
+        else if (segue.identifier == "homeToGallery") {
+            let dest = segue.destination as! GalleryViewController
+            dest.title = "My Gallery"
         }
     }
 }
