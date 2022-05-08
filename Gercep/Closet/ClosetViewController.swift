@@ -16,9 +16,11 @@ class ClosetViewController: UIViewController {
     var closetItem = [Closet]()
     var closetNeutral = [Closet]()
     var closetVibrant = [Closet]()
+    var menus:[String] = ["Tops", "Bottoms", "One-piece", "Shoes"]
     var index:Int = 0
     var stepper:Int = 0
     var type:String?
+    var valueSelected: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class ClosetViewController: UIViewController {
         closetCollection.dataSource = self
         
         if stepper == 0 {
+            stepper = stepper + 1
             dataFeeder()
         }
         
@@ -90,17 +93,52 @@ class ClosetViewController: UIViewController {
     @objc func addTapped() {
         let alert = UIAlertController(title: "Add New Clothing", message: "Pick a method!", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Open Camera", style: UIAlertAction.Style.default, handler: { action in
-            let picker = UIImagePickerController()
-            picker.sourceType = .camera
-        }))
-        alert.addAction(UIAlertAction(title: "From Existing Photo", style: UIAlertAction.Style.default, handler: { action in
+//            let picker = UIImagePickerController()
+//            picker.sourceType = .camera
+            let alertView = UIAlertController(title: "Select category", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
+
+            let pickerView = UIPickerView(frame:CGRect(x: 0, y: 50, width: 260, height: 162))
+            pickerView.dataSource = self
+            pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+
+            alertView.view.addSubview(pickerView)
+
+            let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                let closetAdd = Closet(image: "dummy_add", type: self.valueSelected, color: "Neutral")
+                self.closetNeutral.append(closetAdd)
+                self.closetCollection.reloadData()
+            })
+
+            alertView.addAction(action)
             
+            self.present(alertView, animated: true, completion: {  pickerView.frame.size.width = alertView.view.frame.size.width
+            })
+        }))
+        
+        alert.addAction(UIAlertAction(title: "From Existing Photo", style: UIAlertAction.Style.default, handler: { action in
+            let alertView = UIAlertController(title: "Select category", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
+
+            let pickerView = UIPickerView(frame:CGRect(x: 0, y: 50, width: 260, height: 162))
+            pickerView.dataSource = self
+            pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+
+            alertView.view.addSubview(pickerView)
+
+            let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                let closetAdd = Closet(image: "dummy_add", type: self.valueSelected, color: "Neutral")
+                self.closetNeutral.append(closetAdd)
+                self.closetCollection.reloadData()
+            })
+
+            alertView.addAction(action)
+            
+            self.present(alertView, animated: true, completion: {  pickerView.frame.size.width = alertView.view.frame.size.width
+            })
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        
-        // masukin datanya ke struct
-        // display
         closetCollection.reloadData()
     }
     
@@ -132,7 +170,7 @@ extension ClosetViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 self.closetVibrant.append(temp)
                 print("switch")
                 self.closetItem.remove(at: indexPath.row)
-                self.closetVibrant.remove(at: indexPath.row)
+//                self.closetVibrant.remove(at: indexPath.row)
                 self.closetCollection.reloadData()
             }))
         }
@@ -142,7 +180,7 @@ extension ClosetViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 self.closetNeutral.append(temp)
                 print("switch")
                 self.closetItem.remove(at: indexPath.row)
-                self.closetVibrant.remove(at: indexPath.row)
+//                self.closetVibrant.remove(at: indexPath.row)
                 self.closetCollection.reloadData()
             }))
         }
@@ -184,4 +222,23 @@ extension ClosetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         return cell
     }
+}
+
+extension ClosetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return menus.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return menus[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        valueSelected = menus[row] as String
+     }
+    
 }
