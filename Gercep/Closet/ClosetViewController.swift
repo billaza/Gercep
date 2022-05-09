@@ -128,7 +128,14 @@ class ClosetViewController: UIViewController {
 
             let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                 let closetAdd = Closet(image: "dummy_add", type: self.valueSelected, color: "Neutral")
-                self.closetNeutral.append(closetAdd)
+                
+                if (self.type == "All") {
+                    self.closetNeutral.append(closetAdd)
+                }
+                if (self.type == self.valueSelected) {
+                    self.closetNeutral.append(closetAdd)
+                }
+                
                 self.closetCollection.reloadData()
             })
 
@@ -169,8 +176,9 @@ extension ClosetViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 let temp = self.closetNeutral[indexPath.row]
                 self.closetVibrant.append(temp)
                 print("switch")
+                self.closetNeutral = self.closetItem
                 self.closetItem.remove(at: indexPath.row)
-//                self.closetVibrant.remove(at: indexPath.row)
+                self.closetNeutral.remove(at: indexPath.row)
                 self.closetCollection.reloadData()
             }))
         }
@@ -179,8 +187,9 @@ extension ClosetViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 let temp = self.closetVibrant[indexPath.row]
                 self.closetNeutral.append(temp)
                 print("switch")
+                self.closetVibrant = self.closetItem
                 self.closetItem.remove(at: indexPath.row)
-//                self.closetVibrant.remove(at: indexPath.row)
+                self.closetVibrant.remove(at: indexPath.row)
                 self.closetCollection.reloadData()
             }))
         }
